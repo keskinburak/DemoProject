@@ -1,0 +1,8 @@
+extend type Mutation {
+    createRole(createRoleInput : CreateRoleInput) : Role
+    addRoleToUser(username: String, roleName: String) : User
+}
+
+input CreateRoleInput{
+    name: String!
+}

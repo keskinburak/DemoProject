@@ -1,0 +1,38 @@
+type User{
+    id: String!
+    name: String
+    surname: String
+    password: String
+    username: String
+    tournamentId: [String]
+    roleList: [Role]
+}
+
+type Role{
+    id: String!
+    name: String!
+}
+
+input EditUserInput{
+    id: String!
+    name: String
+    surname: String
+    password: String
+    username: String
+}
+
+input RegisterUserInput{
+    name: String!
+    surname: String!
+    password: String!
+    username: String!
+}
+
+extend type Query {
+    getUsers: [User]
+}
+
+type Mutation {
+    editUser(editUserInput : EditUserInput!) : User
+    registerUser(registerUserInput : RegisterUserInput!) : User
+}

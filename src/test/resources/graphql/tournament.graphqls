@@ -1,0 +1,49 @@
+type Tournament {
+    id: ID!
+    name: String!
+    game: String
+    prize: String
+    currency: String
+    teamSize: Int
+    bracketType: String
+    dateTime: String
+    region: String
+    ownerId: String
+    userList: [String]
+}
+
+input CreateTournamentInput{
+    name: String
+    game: String
+    prize: String
+    currency: String
+    teamSize: Int
+    bracketType: String
+    dateTime: String
+    region: String
+}
+
+input EditTournamentInput{
+    id: String!
+    name: String
+    game: String
+    prize: String
+    currency: String
+    teamSize: Int
+    bracketType: String
+    dateTime: String
+    region: String
+}
+
+extend type Query {
+    tournaments: [Tournament]
+    joinedTournaments: [Tournament]
+    createdTournaments: [Tournament]
+}
+
+extend type Mutation {
+    createTournament(createTournamentInput : CreateTournamentInput) : Tournament
+    joinTournament(tournamentId: String) : Tournament
+    unjoinTournament(tournamentId: String) : Tournament
+    editTournament(editTournamentInput : EditTournamentInput) : Tournament
+}
